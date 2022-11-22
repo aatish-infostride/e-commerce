@@ -1,0 +1,166 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/account-settings.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/profile-drop.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+                Zay
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Proile</button>
+                    <div class="dropdown-content">
+                      <a href="{%url 'account' current_user.id %}">Account</a>
+                      <a href="{%url 'my-orders' current_user.id%}">My Orders</a>
+                      <a href="{% url 'logout'%}">logout</a>
+                    </div>
+                  </div> 
+
+                  <a href="{%url 'my-orders' current_user.id%}"><i class="ri-shopping-cart-line" style="padding-left: 15px;"></i></a>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4 pb-5">
+                <!-- Account Sidebar-->
+                <div class="author-card pb-3">
+                    <div class="author-card-cover" style="background-image: url(https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg);"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
+                    <div class="author-card-profile">
+                        <div class="author-card-avatar"><img src="/{{MEDIA_URL}}{{current_user.image}}" alt="Daniel Adams">
+                        </div>
+                        <div class="author-card-details">
+                            <h5 class="author-card-name text-lg">{{ current_user.name}}</h5><span class="author-card-position">Joined February 06, 2017</span>
+                        </div>
+                    </div>  
+                </div>
+
+
+                <div class="wizard">
+                    <nav class="list-group list-group-flush">
+                        <a class="list-group-item" href="#">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Orders List</div>
+                                </div><span class="badge badge-secondary">6</span>
+                            </div>
+                        </a><a class="list-group-item active" href="#"><i class="fe-icon-user text-muted"></i>Profile Settings</a><a class="list-group-item" href="#"><i class="fe-icon-map-pin text-muted"></i>Addresses</a>
+                        <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fe-icon-heart mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
+                                </div><span class="badge badge-secondary">3</span>
+                            </div>
+                        </a>
+                        <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-account-tickets" target="__blank">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fe-icon-tag mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">My Tickets</div>
+                                </div><span class="badge badge-secondary">4</span>
+                            </div>
+                        </a>
+                        <a class="list-group-item" href="{%url 'change-password' current_user.id %}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fe-icon-tag mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Change Password</div>
+                                </div><span class="badge badge-secondary">5</span>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+            <!-- Profile Settings-->
+            <div class="col-lg-8 pb-5">
+              
+                <form class="row" action="{% url 'updaterecord' current_user.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-fn">First Name</label>
+                            <input class="form-control" name="name" type="text" id="account-fn" value="{{ current_user.name}}" required="">
+                        </div>
+                    
+                    </div>
+                  
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-email">E-mail Address</label>
+                            <input class="form-control" name="email" type="email"  id="account-email" value="{{ current_user.email}}" >
+                        </div>
+                    </div>
+                    
+                    
+
+                    <div class="select-file"><label for="myfile">Select profile:</label>
+                        <input type="file" id="myfile" name="myfile" style="margin-top: 18px;"><br><br>
+                    </div>
+                    
+
+                    {%for message in messages %}
+                            {%if "email" in message.tags %}
+                                  <p> {{message}} </p>
+                            {%endif%}
+                        {%endfor%}
+                    <div class="col-12">
+                        <hr class="mt-2 mb-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="custom-control custom-checkbox d-block">
+                                <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
+                                <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
+                            </div>
+                            
+                            <button >update profile</button>
+                        </div>
+                    </div>
+                    
+                </form>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'assets/css/orders.css'%}">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/profile-drop.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+                Zay
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Proile</button>
+                    <div class="dropdown-content">
+                      <a href="{%url 'account' current_user.id %}">Account</a>
+                      <a href="{%url 'my-orders' current_user.id%}">My Orders</a>
+                      <a href="{% url 'logout'%}">logout</a>
+                    </div>
+                  </div> 
+
+                  <a href="{%url 'my-orders' current_user.id%}"><i class="ri-shopping-cart-line" style="padding-left: 15px;"></i></a>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="rounded">
+                    <div class="table-responsive table-borderless">
+                        <table class="table">
+                            <thead>
+                                
+                                <tr>
+                                    
+                                    </th>
+                                    <th>Order #</th>
+                                    <th>product name</th>
+                                    <th>status</th>
+                                    <th>Total</th>
+                                    <th>Created</th>
+                                    <th></th>
+                                </tr>
+                                
+                            </thead>
+                            {% for o in odr %}
+                            <tbody class="table-body">
+                                <tr class="cell-1">
+                                    
+                                    <td>{{ o.id }}</td>
+                                    <td>{{ o.name }}</td>
+                                    <td><span class="badge badge-success"></span></td>
+                                    <td>{{ o.price }}</td>
+                                    <td>{{ o.date }}</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
